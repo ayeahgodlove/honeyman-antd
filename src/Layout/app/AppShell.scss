@@ -1,0 +1,28 @@
+#root,
+.app-shell-layout {
+    height: 100% !important;
+}
+
+.app-shell-sidebar_hide {
+    display: none;
+}
+.app-shell-baricon {
+    display: inline-block;
+}
+
+.ant-layout-sider-trigger {
+    background: #d7dade;
+    color: #333;
+
+    &:hover {
+        background: #fff;
+    }
+}
+@media screen and (min-width: 767px) {
+    .app-shell-sidebar_hide {
+        display: block;
+    }
+    .app-shell-baricon {
+        display: none;
+    }
+}
