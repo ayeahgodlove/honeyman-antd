@@ -1,8 +1,6 @@
-import {
-  MenuOutlined,
-} from "@ant-design/icons";
-import { Button, Drawer } from "antd";
-import React, { useState } from "react";
+import { MenuOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+import React from "react";
 import { Link } from "react-router-dom";
 import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
@@ -12,25 +10,22 @@ interface IProps {
   handleShow?: () => void;
 }
 const Navbar: React.FC<IProps> = ({ showMenuIcon = false, handleShow }) => {
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
 
-  const onClose = () => {
-    setVisible(false);
-  };
+  // const onClose = () => {
+  //   setVisible(false);
+  // };
 
   return (
     <nav className="menuBar">
       <div className="logo">
-        {showMenuIcon && (
-          <Button
-            type="default"
-            icon={<MenuOutlined size={25} style={{ fontSize: "18px" }} />}
-            onClick={handleShow}
-            className="app-shell-baricon"
+        <Link to="/" style={{ marginLeft: 1 }}>
+          <img
+            src="./honey-man.png"
+            height={65}
+            width={65}
+            alt="honeyman logo"
           />
-        )}
-        <Link to="" style={{ marginLeft: 1 }}>
-          logo
         </Link>
       </div>
       <div className="menuCon">
@@ -42,7 +37,15 @@ const Navbar: React.FC<IProps> = ({ showMenuIcon = false, handleShow }) => {
           <RightMenu />
         </div>
 
-        <Drawer
+        {showMenuIcon && (
+          <Button
+            type="default"
+            icon={<MenuOutlined size={25} style={{ fontSize: "18px" }} />}
+            onClick={handleShow}
+            className="app-shell-baricon"
+          />
+        )}
+        {/* <Drawer
           title="Basic Drawer"
           placement="right"
           closable={true}
@@ -51,7 +54,7 @@ const Navbar: React.FC<IProps> = ({ showMenuIcon = false, handleShow }) => {
         >
           <LeftMenu />
           <RightMenu />
-        </Drawer>
+        </Drawer> */}
       </div>
     </nav>
   );

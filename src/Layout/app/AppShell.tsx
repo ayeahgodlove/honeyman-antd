@@ -1,37 +1,43 @@
 import { Breadcrumb, Drawer, Layout, Menu, MenuProps } from "antd";
 import React, { useState } from "react";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { FaUsersCog } from "react-icons/fa";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { BiCategoryAlt } from "react-icons/bi";
 import Navbar from "Components/Navbar";
 import "./AppShell.scss";
+import { Link } from "react-router-dom";
 
 const { Sider, Content } = Layout;
 
 const items2: MenuProps["items"] = [
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-].map((icon, index) => {
-  const key = String(index + 1);
-
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
-  };
-});
-
+  {
+    label: (
+      <Link to="/categories" style={{ padding: 0 }}>
+        Categories
+      </Link>
+    ),
+    key: "categories",
+    icon: <BiCategoryAlt size={21} color="#f77908" />,
+  },
+  {
+    label: (
+      <Link to="/products" style={{ padding: 0 }}>
+        Products
+      </Link>
+    ),
+    key: "products",
+    icon: <MdOutlineProductionQuantityLimits size={21} color="#f77908"  />,
+  },
+  {
+    label: (
+      <Link to="/users" style={{ padding: 0 }}>
+        Users
+      </Link>
+    ),
+    key: "users",
+    icon: <FaUsersCog  size={21} color="#f77908" />,
+  }, // remember to pass the key prop
+];
 interface IProps {
   children: any;
 }
@@ -45,8 +51,8 @@ const AppShell: React.FC<IProps> = ({ children }) => {
   };
 
   const handleCollapse = () => {
-    setCollapsed(!collapsed)
-  }
+    setCollapsed(!collapsed);
+  };
   const onClose = () => {
     setShow(false);
   };

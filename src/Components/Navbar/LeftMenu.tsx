@@ -33,7 +33,7 @@ const LeftMenu = () => {
   ];
   return (
     <>
-      <Menu items={items} mode={"horizontal"} />
+      <Menu className="left_navigation" items={items} mode={"horizontal"} />
     </>
   );
 };

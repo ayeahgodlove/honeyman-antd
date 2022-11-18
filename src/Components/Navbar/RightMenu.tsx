@@ -223,7 +223,7 @@ const RightMenu = () => {
     }, // which is required
   ];
 
-  return <Menu mode={"horizontal"} items={items} style={{ width: "100%" }} />;
+  return <Menu className="right_navigation" mode={"horizontal"} items={items} />;
 };
 
 export default RightMenu;

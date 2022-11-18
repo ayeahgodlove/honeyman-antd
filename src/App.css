@@ -1,30 +1,32 @@
 @import "~antd/dist/antd.css";
 
 .menuBar {
-  padding: 0 20px;
   border-bottom: solid 1px #e8e8e8;
   overflow: auto;
   box-shadow: 0 0 30px #f3f1f1;
   background: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  height: 70px;
 }
 
 .logo {
-  width: 150px;
-  float: left;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo a {
   display: inline-block;
   font-size: 20px;
-  padding: 19px 20px;
+  padding: 5px 10px;
   text-transform: capitalize;
 }
 
 .menuCon {
-  width: calc(100% - 150px);
+  width: calc(100% - 200px);
   float: left;
 }
 
@@ -45,12 +47,20 @@
   border-bottom: none;
 }
 
+.menuCon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+}
+
 .menuCon .leftMenu {
-  float: left;
+  justify-self: start;
+
 }
 
 .menuCon .rightMenu {
-  float: right;
+  justify-self: end;
 }
 
 .barsMenu {
@@ -109,6 +119,10 @@
 }
 
 @media (max-width: 767px) {
+  .menuCon {
+    justify-content: end;
+  }
+
   .barsMenu {
     display: inline-block;
   }
