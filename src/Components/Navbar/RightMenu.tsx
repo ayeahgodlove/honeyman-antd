@@ -8,8 +8,8 @@ import {
   TranslationOutlined,
 } from "@ant-design/icons";
 import { Avatar, Badge, Space } from "antd";
+import { ItemType } from "antd/es/menu/hooks/useItems";
 
-import { ItemType } from "antd/lib/menu/hooks/useItems";
 
 const RightMenu = () => {
   const [language, setLanguage] = useState("en");
@@ -25,7 +25,7 @@ const RightMenu = () => {
       label: "",
       key: "notification",
       icon: (
-        <Badge dot count={1} className="app-header__link">
+        <Badge dot color="#f77908" count={1} className="app-header__link">
           <BellOutlined className="app-header__icon" style={{ fontSize: 23 }} />
         </Badge>
       ),
@@ -118,7 +118,7 @@ const RightMenu = () => {
         <Avatar
           style={{
             color: "#fff",
-            backgroundColor: "#e84749",
+            backgroundColor: "#f77908",
             fontWeight: "bold",
             fontSize: 14
           }}

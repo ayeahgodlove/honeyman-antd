@@ -14,8 +14,9 @@ const NotFoundPage: React.FC = () => {
             }}
         >
              <Result
-                status="404"
+                // status="404"
                 title="404"
+                icon={<img src='./honey-man.png'alt='404 icon for page' />}
                 subTitle="Sorry, the page you visited does not exist."
                 extra={
                     <Button type="primary" onClick={() => router(-1)}>

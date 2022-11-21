@@ -1,7 +1,7 @@
 import { Breadcrumb, Drawer, Layout, Menu, MenuProps } from "antd";
 import React, { useState } from "react";
 import { FaUsersCog } from "react-icons/fa";
-import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { MdOutlinePointOfSale, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
 import Navbar from "Components/Navbar";
 import "./AppShell.scss";
@@ -30,13 +30,22 @@ const items2: MenuProps["items"] = [
   },
   {
     label: (
+      <Link to="/orders" style={{ padding: 0 }}>
+        Orders
+      </Link>
+    ),
+    key: "orders",
+    icon: <MdOutlinePointOfSale size={21} color="#f77908"  />,
+  },
+  {
+    label: (
       <Link to="/users" style={{ padding: 0 }}>
         Users
       </Link>
     ),
     key: "users",
     icon: <FaUsersCog  size={21} color="#f77908" />,
-  }, // remember to pass the key prop
+  }, // remember to pass the key prop 
 ];
 interface IProps {
   children: any;
@@ -47,7 +56,6 @@ const AppShell: React.FC<IProps> = ({ children }) => {
 
   const handleShow = () => {
     setShow(true);
-    console.log("Hello...", show);
   };
 
   const handleCollapse = () => {
