@@ -9,18 +9,27 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Badge, Space } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const RightMenu = () => {
   const [language, setLanguage] = useState("en");
 
   const toggleLanguage = (key: string) => {
     setLanguage(key);
-    console.log(language)
+    console.log(language);
   };
 
+  const { loginWithRedirect } = useAuth0();
+
   const items: ItemType[] = [
-    { label: "Signin", key: "signin" }, // remember to pass the key prop
+    {
+      label: (
+        <Link to={"#"} onClick={() => loginWithRedirect()}>
+          Signin
+        </Link>
+      ),
+      key: "signin",
+    }, // remember to pass the key prop
     {
       label: "",
       key: "notification",
@@ -120,7 +129,7 @@ const RightMenu = () => {
             color: "#fff",
             backgroundColor: "#f77908",
             fontWeight: "bold",
-            fontSize: 14
+            fontSize: 14,
           }}
         >
           A.G
@@ -223,7 +232,9 @@ const RightMenu = () => {
     }, // which is required
   ];
 
-  return <Menu className="right_navigation" mode={"horizontal"} items={items} />;
+  return (
+    <Menu className="right_navigation" mode={"horizontal"} items={items} />
+  );
 };
 
 export default RightMenu;

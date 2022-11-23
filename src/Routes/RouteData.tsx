@@ -1,31 +1,44 @@
 import { IRoute } from "Models/Route";
 import NotFoundPage from "Pages/404_Page";
-import HomePage from "Pages/HomePage";
+import CallbackPage from "Pages/CallbackPage";
+import DashboardPage from "Pages/DashboardPage";
 import WelcomePage from "Pages/WelcomePage";
 import React from "react";
 
 export const routes: IRoute[] = [
+  /**
+   * callback route
+   */
   {
-    path: "/",
-    private: true,
+    path: "/callback",
+    private: false,
     exact: true,
-    component: <HomePage />,
+    component: <CallbackPage />,
   },
   /**
    * Welcome
    */
   {
-    path: "/welcome",
+    path: "/",
     private: false,
     exact: true,
     component: <WelcomePage />,
   },
 
+  /**
+   * dashboard route
+   */
+  {
+    path: "/dashboard",
+    private: true,
+    exact: true,
+    component: <DashboardPage />,
+  },
   {
     // default not found route
-    path: '*',
+    path: "*",
     private: false,
     exact: false,
     component: <NotFoundPage />,
-},
+  },
 ];
