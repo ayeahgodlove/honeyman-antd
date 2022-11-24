@@ -19,7 +19,7 @@ const RightMenu = () => {
     console.log(language);
   };
 
-  const { logoutFun, loginFun } = useToken();
+  const { logoutFun, loginFun, isAuthenticated, user } = useToken();
 
   const items: ItemType[] = [
     {
@@ -29,6 +29,9 @@ const RightMenu = () => {
         </Link>
       ),
       key: "signin",
+      style: {
+        display: isAuthenticated ? "none" : "",
+      },
     }, // remember to pass the key prop
     {
       label: "",
@@ -65,12 +68,18 @@ const RightMenu = () => {
             </>
           ),
           key: "notification-key",
+          style: {
+            display: !isAuthenticated ? "none" : "",
+          },
         },
         {
           label: <Link to="/">mark all as read</Link>,
           key: "mark-as-read",
         },
       ],
+      style: {
+        display: !isAuthenticated ? "none" : "",
+      },
     }, // which is required
     {
       label: "",
@@ -131,13 +140,14 @@ const RightMenu = () => {
             fontWeight: "bold",
             fontSize: 14,
           }}
+          src={user?.picture}
         >
-          A.G
+          {user?.name?.charAt(0)}
         </Avatar>
       ),
       children: [
         {
-          label: <strong>Ayeah Godlove</strong>,
+          label: <strong>{user?.name}</strong>,
           key: "profile_name",
         },
         {
@@ -162,28 +172,6 @@ const RightMenu = () => {
             {
               label: (
                 <Link
-                  to="/profile/tab?=display"
-                  // onClick={() => handleRoute('display')}
-                >
-                  Display
-                </Link>
-              ),
-              key: "display",
-            },
-            {
-              label: (
-                <Link
-                  to="/profile/tab?=auth"
-                  // onClick={() => handleRoute('auth')}
-                >
-                  Login & Authentication
-                </Link>
-              ),
-              key: "login-and-authentication",
-            },
-            {
-              label: (
-                <Link
                   to="/profile/tab?=settings"
                   // onClick={() => handleRoute('settings')}
                 >
@@ -205,32 +193,20 @@ const RightMenu = () => {
             },
           ],
         },
-        {
-          label: (
-            <>
-              <p
-                style={{
-                  letterSpacing: 1.875,
-                  marginBottom: 0,
-                  marginTop: 10,
-                  color: "#2D3239",
-                  fontSize: ".75rem",
-                }}
-              >
-                {"Account".toUpperCase()}
-              </p>
-              <Divider style={{ margin: 2 }} />
-            </>
-          ),
-          key: "account",
-          type: "group",
-        },
       ],
+      style: {
+        display: !isAuthenticated ? "none" : "",
+      },
     }, // which is required
   ];
 
   return (
-    <Menu className="right_navigation" mode={"horizontal"} items={items} />
+    <Menu
+      className="right_navigation"
+      mode={"horizontal"}
+      style={{ width: isAuthenticated ? "250px" : '200px' }}
+      items={items}
+    />
   );
 };
 

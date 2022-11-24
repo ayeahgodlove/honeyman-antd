@@ -1,4 +1,4 @@
-import { IRoute } from "Models/Route";
+import { IRoute } from "Models/IRoute";
 import NotFoundPage from "Pages/404_Page";
 import CallbackPage from "Pages/CallbackPage";
 import DashboardPage from "Pages/DashboardPage";

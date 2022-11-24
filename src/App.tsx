@@ -7,7 +7,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import { Auth0Config } from "Config/Constant";
 import { useNavigate } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "Store/store";
+import store from "Redux/store";
 const theme: ThemeConfig = {
   token: {
     colorPrimary: "#f77908",

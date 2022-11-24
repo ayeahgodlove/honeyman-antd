@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Auth0Config } from "Config/Constant";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTokenError, fetchTokenSuccess } from "Store/token/token.slice";
+import { fetchTokenError, fetchTokenSuccess } from "Redux/token.slice";
 
 export const useToken = () => {
   const { getAccessTokenSilently, user, isAuthenticated } = useAuth0();
@@ -61,5 +61,7 @@ export const useToken = () => {
     logoutFun,
     loginFun,
     userMetadata,
+    isAuthenticated,
+    user
   };
 };
