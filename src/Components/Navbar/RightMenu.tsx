@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Badge, Space } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useToken } from "hooks/useToken";
 
 const RightMenu = () => {
   const [language, setLanguage] = useState("en");
@@ -19,12 +19,12 @@ const RightMenu = () => {
     console.log(language);
   };
 
-  const { loginWithRedirect } = useAuth0();
+  const { logoutFun, loginFun } = useToken();
 
   const items: ItemType[] = [
     {
       label: (
-        <Link to={"#"} onClick={() => loginWithRedirect()}>
+        <Link to={"#"} onClick={loginFun}>
           Signin
         </Link>
       ),
@@ -195,10 +195,7 @@ const RightMenu = () => {
             {
               label: (
                 <>
-                  <Link
-                    to="/welcome"
-                    // onClick={() => signOut()}
-                  >
+                  <Link to="#" onClick={logoutFun}>
                     Logout
                   </Link>
                 </>
