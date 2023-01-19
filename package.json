@@ -1,8 +1,8 @@
 {
+  "homepage": "https://ayeahgodlove.github.io/honeyman-antd",
   "name": "honeyman-antd",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ayeahgodlove.github.io/honeyman-antd",
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@auth0/auth0-react": "^1.12.0",

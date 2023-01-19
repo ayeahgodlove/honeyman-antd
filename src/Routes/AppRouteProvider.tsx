@@ -10,7 +10,7 @@ const AppRouteProvider: React.FC = () => {
         <Routes>
           {routes.map((route, index) => {
             return (
-              <Route path={route.path} element={route.component} key={index} />
+              <Route path={`/honeyman-antd/${route.path}`} element={route.component} key={index} />
             );
           })}
         </Routes>
