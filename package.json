@@ -49,6 +49,7 @@
     "@types/mocha": "^10.0.0",
     "@types/moment": "^2.13.0",
     "@types/react": "^18.0.25",
-    "@types/redux-logger": "^3.0.9"
+    "@types/redux-logger": "^3.0.9",
+    "gh-pages": "^4.0.0"
   }
 }
