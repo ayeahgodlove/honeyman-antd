@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/honeyman-antd/static/css/main.e8833bcb.css",
-    "main.js": "/honeyman-antd/static/js/main.071452d1.js",
+    "main.js": "/honeyman-antd/static/js/main.163e0b76.js",
     "index.html": "/honeyman-antd/index.html",
     "main.e8833bcb.css.map": "/honeyman-antd/static/css/main.e8833bcb.css.map",
-    "main.071452d1.js.map": "/honeyman-antd/static/js/main.071452d1.js.map"
+    "main.163e0b76.js.map": "/honeyman-antd/static/js/main.163e0b76.js.map"
   },
   "entrypoints": [
     "static/css/main.e8833bcb.css",
-    "static/js/main.071452d1.js"
+    "static/js/main.163e0b76.js"
   ]
 }
