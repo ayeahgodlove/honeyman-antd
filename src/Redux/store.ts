@@ -19,13 +19,15 @@ export const rootReducer = combineReducers({
   order: orderReducer,
   category: categoryReducer,
   subCategory: subCategoryReducer,
-  payment: paymentReducer
+  payment: paymentReducer,
 });
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(loggerMiddleware).concat(middlewares),
+    getDefaultMiddleware({ serializableCheck: false })
+      .concat(loggerMiddleware)
+      .concat(middlewares),
   devTools: true, //change when deploying
 });
 

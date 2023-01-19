@@ -2,6 +2,7 @@
   "name": "resume-builder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ayeahgodlove.github.io/honeyman-antd",
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@auth0/auth0-react": "^1.12.0",
@@ -27,7 +28,9 @@
     "eject": "react-scripts eject",
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

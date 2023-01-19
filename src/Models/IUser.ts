@@ -33,5 +33,6 @@ export interface IUserState extends IBaseState {
 }
 
 export interface IUserResponse extends IResponseBase {
-  data: IUser
+  data: IUser;
+  token: string;
 }
