@@ -1,6 +1,5 @@
 {
-  "homepage": "https://ayeahgodlove.github.io/honeyman-antd",
-  "name": "honeyman-antd",
+  "name": "honeyman",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -46,10 +45,12 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.0.0",
+    "@types/enzyme": "^3.10.12",
     "@types/mocha": "^10.0.0",
     "@types/moment": "^2.13.0",
     "@types/react": "^18.0.25",
     "@types/redux-logger": "^3.0.9",
-    "gh-pages": "^4.0.0"
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
+    "enzyme": "^3.11.0"
   }
 }

@@ -21,7 +21,7 @@ const Navbar: React.FC<IProps> = ({ showMenuIcon = false, handleShow }) => {
       <div className="logo">
         <Link to="/" style={{ marginLeft: 1 }}>
           <img
-            src="./honey-man.png"
+            src="/honey-man.png"
             height={65}
             width={65}
             alt="honeyman logo"

@@ -14,7 +14,7 @@ const ProtectedRoute: React.FC<RouteProps> = ({
       <Route {...rest} element={Component} />
     </AppShell>
   ) : (
-    <Navigate to={"/welcome"} />
+    <Navigate to={"/honeyman-antd/welcome"} />
   );
 };
 
