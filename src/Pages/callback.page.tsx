@@ -1,6 +1,6 @@
-import Spinner from "Components/Utilities/Spinner";
-import { useToken } from "hooks/useToken";
-import GeneralAppShell from "Layout/app/GeneralAppShell";
+import Spinner from "components/utilities/Spinner";
+import { useToken } from "hooks/token.hook";
+import GeneralAppShell from "layout/app/general-app-shell";
 import React from "react";
 import { Navigate } from "react-router-dom";
 

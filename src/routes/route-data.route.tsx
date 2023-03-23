@@ -1,11 +1,11 @@
-import { IRoute } from "Models/IRoute";
-import NotFoundPage from "Pages/404_Page";
-import ForgotPasswordPage from "Pages/Auth/ForgotPasswordPage";
-import LoginPage from "Pages/Auth/LoginPage";
-import RegisterPage from "Pages/Auth/RegisterPage";
-import CallbackPage from "Pages/CallbackPage";
-import DashboardPage from "Pages/DashboardPage";
-import WelcomePage from "Pages/WelcomePage";
+import { IRoute } from "models/IRoute";
+import NotFoundPage from "pages/404_Page";
+import ForgotPasswordPage from "pages/auth/forgot-password.page";
+import LoginPage from "pages/auth/login.page";
+import RegisterPage from "pages/auth/register.page";
+import CallbackPage from "pages/callback.page";
+import DashboardPage from "pages/dashboard.page";
+import WelcomePage from "pages/welcome.page";
 import React from "react";
 
 export const routes: IRoute[] = [

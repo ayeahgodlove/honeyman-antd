@@ -1,5 +1,5 @@
-import { IUser, IUserResponse } from "Models/IUser";
-import { requestType } from "Services";
+import { IUser, IUserResponse } from "models/IUser";
+import { requestType } from "services";
 
 export const AuthService = {
   register: (user: IUser): Promise<IUserResponse> =>

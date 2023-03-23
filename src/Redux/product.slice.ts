@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductService } from "Services/ProductService";
-import { IProductState, emptyProduct, IProduct } from "../Models/IProduct";
+import { ProductService } from "services/product.service";
+import { IProductState, emptyProduct, IProduct } from "../models/IProduct";
 
 export const initialState: IProductState = {
   products: [],

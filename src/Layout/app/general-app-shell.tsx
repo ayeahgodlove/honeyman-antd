@@ -1,9 +1,9 @@
 import { Drawer, Layout, Menu } from "antd";
 import React, { useState } from "react";
 
-import Navbar from "Components/Navbar";
+import Navbar from "components/navbar";
 import "./AppShell.scss";
-import { GeneralMenuItemsWithIcons } from "Components/Navbar/menu";
+import { GeneralMenuItemsWithIcons } from "components/navbar/menu";
 
 const { Sider, Content } = Layout;
 

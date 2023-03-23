@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import AppRouteProvider from "Routes/AppRouteProvider";
+import AppRouteProvider from "routes/app-route-provider";
 import { ConfigProvider } from "antd";
 import { ThemeConfig } from "antd/es/config-provider/context";
 import { Provider } from "react-redux";
-import store from "Redux/store";
+import store from "redux/store";
 import { Auth0Provider } from "@auth0/auth0-react";
-import { Auth0Config } from "Config/Constant";
+import { Auth0Config } from "config/constant";
 import { useNavigate } from "react-router-dom";
 
 const theme: ThemeConfig = {

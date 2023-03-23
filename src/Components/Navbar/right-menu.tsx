@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Badge, Space } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
-import { useToken } from "hooks/useToken";
+import { useToken } from "hooks/token.hook";
 
 const RightMenu = () => {
   const [language, setLanguage] = useState("en");

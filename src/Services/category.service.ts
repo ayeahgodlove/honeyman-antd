@@ -1,5 +1,5 @@
-import { ICategory, ICategoryResponse } from "Models/ICategory";
-import { requestType } from "Services";
+import { ICategory, ICategoryResponse } from "models/ICategory";
+import { requestType } from "services";
 
 export const CategoryService = {
     list: (): Promise<ICategory[]> => requestType.get("/api/categories"),

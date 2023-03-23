@@ -1,5 +1,5 @@
-import { IPayment, IPaymentResponse } from "Models/IPayment";
-import { requestType } from "Services";
+import { IPayment, IPaymentResponse } from "models/IPayment";
+import { requestType } from "services";
 
 export const PaymentService = {
     list: (): Promise<IPayment[]> => requestType.get("/api/payments"),

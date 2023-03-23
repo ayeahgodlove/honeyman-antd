@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { IRootState } from "Redux/store";
-import { IOrder } from "Models/IOrder";
+import { IRootState } from "redux/store";
+import { IOrder } from "models/IOrder";
 import {
   addOrderSuccess,
   editOrderSuccess,
   fetchOrdersAsync,
   setActiveOrder,
-} from "../Redux/order.slice";
-import { OrderService } from "Services/OrderService";
+} from "../redux/order.slice";
+import { OrderService } from "services/order.service";
 const useOrder = () => {
   const orders = useSelector<IRootState, IOrder[]>((state) => state.order.orders);
   const isLoading = useSelector<IRootState, boolean>(

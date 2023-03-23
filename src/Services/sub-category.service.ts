@@ -1,5 +1,5 @@
-import { ISubCategory, ISubCategoryResponse } from "Models/ICategory";
-import { requestType } from "Services";
+import { ISubCategory, ISubCategoryResponse } from "models/ICategory";
+import { requestType } from "services";
 
 export const SubCategoryService = {
     list: (): Promise<ISubCategory[]> => requestType.get("/api/sub-categories"),

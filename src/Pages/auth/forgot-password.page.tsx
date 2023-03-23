@@ -1,11 +1,11 @@
-import GeneralAppShell from "Layout/app/GeneralAppShell";
+import GeneralAppShell from "layout/app/general-app-shell";
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
-import "../../Styles/login.style.scss";
+import "../../styles/login.style.scss";
 import { Link } from "react-router-dom";
 
-const LoginPage: React.FC = () => {
+const ForgotPasswordPage: React.FC = () => {
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
   };
@@ -40,44 +40,17 @@ const LoginPage: React.FC = () => {
             onFinish={onFinish}
           >
             <Form.Item
-              name="username"
+              name="email"
               rules={[
                 { required: true, message: "Please input your Username!" },
               ]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Username"
+                placeholder="Email"
               />
             </Form.Item>
-            <Form.Item
-              name="password"
-              rules={[
-                { required: true, message: "Please input your Password!" },
-              ]}
-            >
-              <Input
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                type="password"
-                placeholder="Password"
-              />
-            </Form.Item>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: 15,
-              }}
-            >
-              <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox>Remember me</Checkbox>
-              </Form.Item>
 
-              <Link className="login-form-forgot" to="/forgot-password">
-                Forgot password
-              </Link>
-            </div>
             <Form.Item style={{ marginBottom: 0 }}>
               <Button
                 type="primary"
@@ -85,7 +58,7 @@ const LoginPage: React.FC = () => {
                 className="login-form-button"
                 style={{ width: "100%" }}
               >
-                Log in
+                Reset
               </Button>{" "}
             </Form.Item>
             <span
@@ -96,7 +69,7 @@ const LoginPage: React.FC = () => {
                 marginTop: 10,
               }}
             >
-              Or <Link to="/register">register now!</Link>
+              Or <Link to="/login">Go back!</Link>
             </span>
           </Form>
         </Col>
@@ -105,4 +78,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;

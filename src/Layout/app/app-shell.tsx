@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaUsersCog } from "react-icons/fa";
 import { MdOutlinePointOfSale, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
-import Navbar from "Components/Navbar";
+import Navbar from "components/navbar";
 import "./AppShell.scss";
 import { Link } from "react-router-dom";
 

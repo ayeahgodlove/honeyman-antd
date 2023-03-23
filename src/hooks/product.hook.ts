@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { IRootState } from "Redux/store";
-import { IProduct } from "Models/IProduct";
+import { IRootState } from "redux/store";
+import { IProduct } from "models/IProduct";
 import {
   addProductSuccess,
   editProductSuccess,
   fetchProductsAsync,
   setActiveProduct,
-} from "../Redux/product.slice";
-import { ProductService } from "Services/ProductService";
+} from "../redux/product.slice";
+import { ProductService } from "services/product.service";
 const useProduct = () => {
   const products = useSelector<IRootState, IProduct[]>((state) => state.product.products);
   const isLoading = useSelector<IRootState, boolean>(

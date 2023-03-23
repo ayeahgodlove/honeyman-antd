@@ -1,11 +1,11 @@
-import GeneralAppShell from "Layout/app/GeneralAppShell";
+import GeneralAppShell from "layout/app/general-app-shell";
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
-import "../../Styles/login.style.scss";
+import "../../styles/login.style.scss";
 import { Link } from "react-router-dom";
 
-const ForgotPasswordPage: React.FC = () => {
+const RegisterPage: React.FC = () => {
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
   };
@@ -40,17 +40,29 @@ const ForgotPasswordPage: React.FC = () => {
             onFinish={onFinish}
           >
             <Form.Item
-              name="email"
+              name="username"
               rules={[
                 { required: true, message: "Please input your Username!" },
               ]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Email"
+                placeholder="Username"
               />
             </Form.Item>
-
+            
+            <Form.Item
+              name="password"
+              rules={[
+                { required: true, message: "Please input your Password!" },
+              ]}
+            >
+              <Input
+                prefix={<LockOutlined className="site-form-item-icon" />}
+                type="password"
+                placeholder="Password"
+              />
+            </Form.Item>
             <Form.Item style={{ marginBottom: 0 }}>
               <Button
                 type="primary"
@@ -58,7 +70,7 @@ const ForgotPasswordPage: React.FC = () => {
                 className="login-form-button"
                 style={{ width: "100%" }}
               >
-                Reset
+                Register
               </Button>{" "}
             </Form.Item>
             <span
@@ -69,7 +81,7 @@ const ForgotPasswordPage: React.FC = () => {
                 marginTop: 10,
               }}
             >
-              Or <Link to="/login">Go back!</Link>
+              Or <Link to="/login">login now!</Link>
             </span>
           </Form>
         </Col>
@@ -78,4 +90,4 @@ const ForgotPasswordPage: React.FC = () => {
   );
 };
 
-export default ForgotPasswordPage;
+export default RegisterPage;

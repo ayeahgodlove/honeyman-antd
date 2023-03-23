@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { IRootState } from "Redux/store";
-import { ICategory } from "Models/ICategory";
+import { IRootState } from "redux/store";
+import { ICategory } from "models/ICategory";
 import {
   addCategorySuccess,
   editCategorySuccess,
   fetchCategoriesAsync,
   setActiveCategory,
-} from "../Redux/category.slice";
-import { CategoryService } from "Services/CategoryService";
+} from "../redux/category.slice";
+import { CategoryService } from "services/category.service";
 const useCategory = () => {
   const categorys = useSelector<IRootState, ICategory[]>((state) => state.category.categories);
   const isLoading = useSelector<IRootState, boolean>(

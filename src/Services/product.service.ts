@@ -1,5 +1,5 @@
-import { IProduct, IProductResponse } from "Models/IProduct";
-import { requestType } from "Services";
+import { IProduct, IProductResponse } from "models/IProduct";
+import { requestType } from "services";
 
 export const ProductService = {
     list: (): Promise<IProduct[]> => requestType.get("/api/products"),

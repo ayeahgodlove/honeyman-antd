@@ -1,5 +1,5 @@
-import { IOrder, IOrderResponse } from "Models/IOrder";
-import { requestType } from "Services";
+import { IOrder, IOrderResponse } from "models/IOrder";
+import { requestType } from "services";
 
 export const OrderService = {
     list: (): Promise<IOrder[]> => requestType.get("/api/orders"),

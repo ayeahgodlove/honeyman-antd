@@ -2,8 +2,9 @@ import { MenuOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-import LeftMenu from "./LeftMenu";
-import RightMenu from "./RightMenu";
+import LeftMenu from "./left-menu";
+import RightMenu from "./right-menu";
+
 
 interface IProps {
   showMenuIcon?: boolean;

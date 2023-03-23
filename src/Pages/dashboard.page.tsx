@@ -1,4 +1,4 @@
-import AppShell from "Layout/app/AppShell";
+import AppShell from "layout/app/app-shell";
 import React from "react";
 
 const DashboardPage: React.FC = () => {

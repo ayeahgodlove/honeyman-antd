@@ -1,11 +1,11 @@
-import GeneralAppShell from "Layout/app/GeneralAppShell";
+import GeneralAppShell from "layout/app/general-app-shell";
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
-import "../../Styles/login.style.scss";
+import "../../styles/login.style.scss";
 import { Link } from "react-router-dom";
 
-const RegisterPage: React.FC = () => {
+const LoginPage: React.FC = () => {
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
   };
@@ -50,7 +50,6 @@ const RegisterPage: React.FC = () => {
                 placeholder="Username"
               />
             </Form.Item>
-            
             <Form.Item
               name="password"
               rules={[
@@ -63,6 +62,22 @@ const RegisterPage: React.FC = () => {
                 placeholder="Password"
               />
             </Form.Item>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 15,
+              }}
+            >
+              <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
+
+              <Link className="login-form-forgot" to="/forgot-password">
+                Forgot password
+              </Link>
+            </div>
             <Form.Item style={{ marginBottom: 0 }}>
               <Button
                 type="primary"
@@ -70,7 +85,7 @@ const RegisterPage: React.FC = () => {
                 className="login-form-button"
                 style={{ width: "100%" }}
               >
-                Register
+                Log in
               </Button>{" "}
             </Form.Item>
             <span
@@ -81,7 +96,7 @@ const RegisterPage: React.FC = () => {
                 marginTop: 10,
               }}
             >
-              Or <Link to="/login">login now!</Link>
+              Or <Link to="/register">register now!</Link>
             </span>
           </Form>
         </Col>
@@ -90,4 +105,4 @@ const RegisterPage: React.FC = () => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;

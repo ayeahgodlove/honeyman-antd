@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { IRootState } from "Redux/store";
-import { IUser } from "Models/IUser";
+import { IRootState } from "redux/store";
+import { IUser } from "models/IUser";
 import {
   addUserSuccess,
   editUserSuccess,
   fetchUsersAsync,
   setActiveUser,
-} from "../Redux/user.slice";
-import { UserService } from "Services/UserService";
+} from "../redux/user.slice";
+import { UserService } from "services/user.service";
 const useUser = () => {
   const users = useSelector<IRootState, IUser[]>((state) => state.user.users);
   const isLoading = useSelector<IRootState, boolean>(

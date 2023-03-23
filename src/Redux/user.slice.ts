@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserService } from "Services/UserService";
-import { IUserState, emptyUser, IUser } from "../Models/IUser";
+import { UserService } from "services/user.service";
+import { IUserState, emptyUser, IUser } from "../models/IUser";
 
 export const initialState: IUserState = {
   users: [],

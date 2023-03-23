@@ -1,6 +1,5 @@
+import { AppConstant } from "config/constant";
 import axios, { AxiosResponse } from "axios";
-import { AppConstant } from "Config/Constant";
-import store from "Redux/store";
 
 const api = axios.create({
   baseURL: AppConstant.API_URI,

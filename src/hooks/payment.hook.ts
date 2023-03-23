@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { IRootState } from "Redux/store";
-import { IPayment } from "Models/IPayment";
+import { IRootState } from "redux/store";
+import { IPayment } from "models/IPayment";
 import {
   addPaymentSuccess,
   editPaymentSuccess,
   fetchPaymentsAsync,
   setActivePayment,
-} from "../Redux/payment.slice";
-import { PaymentService } from "Services/PaymentService";
+} from "../redux/payment.slice";
+import { PaymentService } from "services/payment.service";
 const usePayment = () => {
   const payments = useSelector<IRootState, IPayment[]>((state) => state.payment.payments);
   const isLoading = useSelector<IRootState, boolean>(

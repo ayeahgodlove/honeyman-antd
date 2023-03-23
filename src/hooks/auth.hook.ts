@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { IUser, IUserResponse } from "Models/IUser";
+import { IUser, IUserResponse } from "models/IUser";
 
-import { AuthService } from "Services/AuthService";
-import { fetchTokenError, fetchTokenSuccess } from "Redux/token.slice";
-import { setActiveUser } from "Redux/user.slice";
+import { AuthService } from "services/auth.service";
+import { fetchTokenError, fetchTokenSuccess } from "redux/token.slice";
+import { setActiveUser } from "redux/user.slice";
 
 const useAuth = () => {
   const dispatch = useDispatch();

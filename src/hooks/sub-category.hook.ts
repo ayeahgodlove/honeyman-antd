@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { IRootState } from "Redux/store";
-import { ISubCategory } from "Models/ICategory";
+import { IRootState } from "redux/store";
+import { ISubCategory } from "models/ICategory";
 import {
   addSubCategorySuccess,
   editSubCategorySuccess,
   fetchCategoriesAsync,
   setActiveSubCategory,
-} from "../Redux/sub-category.slice";
-import { SubCategoryService } from "Services/SubCategoryService";
+} from "../redux/sub-category.slice";
+import { SubCategoryService } from "services/sub-category.service";
 const useSubCategory = () => {
   const subCategories = useSelector<IRootState, ISubCategory[]>((state) => state.subCategory.subCategories);
   const isLoading = useSelector<IRootState, boolean>(
