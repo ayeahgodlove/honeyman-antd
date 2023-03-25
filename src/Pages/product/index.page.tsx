@@ -1,3 +1,4 @@
+import FilterComponent from "components/product/filter.component";
 import ProductList from "components/product/product-list.component";
 import { useToken } from "hooks/token.hook";
 import GeneralAppShell from "layout/app/general-app-shell";
@@ -9,6 +10,8 @@ const ProductPage: React.FC = () => {
   return (
     <GeneralAppShell>
       <h1 style={{ padding: 30 }}> Product Page Page</h1>
+      {/* search component */}
+      <FilterComponent />
       {/* product list */}
       <ProductList />
     </GeneralAppShell>
