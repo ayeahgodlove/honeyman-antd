@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CategoryService } from "services/category.service";
-import { ICategoryState, emptyCategory, ICategory } from "../models/ICategory";
+import { ICategoryState, emptyCategory, ICategory } from "../models/category.model";
 
 export const initialState: ICategoryState = {
   categories: [],

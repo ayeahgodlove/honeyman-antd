@@ -1,4 +1,4 @@
-import { ISubCategory, ISubCategoryResponse } from "models/ICategory";
+import { ISubCategory, ISubCategoryResponse } from "models/category.model";
 import { requestType } from "services";
 
 export const SubCategoryService = {

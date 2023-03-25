@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { IRootState } from "redux/store";
-import { IOrder } from "models/IOrder";
+import { IOrder } from "models/order.model";
 import {
   addOrderSuccess,
   editOrderSuccess,

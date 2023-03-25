@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { IRootState } from "redux/store";
-import { ICategory } from "models/ICategory";
+import { ICategory } from "models/category.model";
 import {
   addCategorySuccess,
   editCategorySuccess,

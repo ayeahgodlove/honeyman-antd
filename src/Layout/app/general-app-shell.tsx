@@ -58,9 +58,10 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
           <Content
             className="site-layout-background"
             style={{
-              padding: 24,
+              padding: 0,
               margin: 0,
               minHeight: 280,
+              background: 'transparent'
             }}
           >
             {children}

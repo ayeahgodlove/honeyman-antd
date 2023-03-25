@@ -1,4 +1,4 @@
-import { IOrder, IOrderResponse } from "models/IOrder";
+import { IOrder, IOrderResponse } from "models/order.model";
 import { requestType } from "services";
 
 export const OrderService = {

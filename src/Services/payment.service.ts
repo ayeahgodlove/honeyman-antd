@@ -1,4 +1,4 @@
-import { IPayment, IPaymentResponse } from "models/IPayment";
+import { IPayment, IPaymentResponse } from "models/payment.model";
 import { requestType } from "services";
 
 export const PaymentService = {

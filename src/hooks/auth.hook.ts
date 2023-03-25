@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { IUser, IUserResponse } from "models/IUser";
+import { IUser, IUserResponse } from "models/user.model";
 
 import { AuthService } from "services/auth.service";
 import { fetchTokenError, fetchTokenSuccess } from "redux/token.slice";

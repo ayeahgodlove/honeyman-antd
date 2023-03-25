@@ -1,4 +1,4 @@
-import { ICategory, ICategoryResponse } from "models/ICategory";
+import { ICategory, ICategoryResponse } from "models/category.model";
 import { requestType } from "services";
 
 export const CategoryService = {

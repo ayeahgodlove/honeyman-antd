@@ -1,4 +1,4 @@
-import { IProduct, IProductResponse } from "models/IProduct";
+import { IProduct, IProductResponse } from "models/product.model";
 import { requestType } from "services";
 
 export const ProductService = {

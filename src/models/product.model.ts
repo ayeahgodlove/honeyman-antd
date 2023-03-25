@@ -1,5 +1,5 @@
-import { IBaseState } from "./IBaseState";
-import { IResponseBase } from "./IResponseBase";
+import { IBaseState } from "./base-state.model";
+import { IResponseBase } from "./response-base.model";
 
 export interface IProduct {
   id: number;
@@ -9,6 +9,8 @@ export interface IProduct {
   categoryId: number;
   subCategoryId: number;
   imagePath: string;
+  images: string[];
+  rating: number;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
@@ -22,6 +24,8 @@ export const emptyProduct: IProduct = {
   categoryId: 0,
   subCategoryId: 0,
   imagePath: "",
+  images: [],
+  rating: 0,
   createdAt: new Date(),
   updatedAt: new Date(),
   deletedAt: new Date(),
@@ -33,5 +37,5 @@ export interface IProductState extends IBaseState {
 }
 
 export interface IProductResponse extends IResponseBase {
-  data: IProduct
+  data: IProduct;
 }

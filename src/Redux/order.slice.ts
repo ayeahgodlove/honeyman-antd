@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { OrderService } from "services/order.service";
-import { IOrderState, emptyOrder, IOrder } from "../models/IOrder";
+import { IOrderState, emptyOrder, IOrder } from "../models/order.model";
 
 export const initialState: IOrderState = {
   orders: [],

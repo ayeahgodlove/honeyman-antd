@@ -1,5 +1,5 @@
-import { IBaseState } from "./IBaseState";
-import { IResponseBase } from "./IResponseBase";
+import { IBaseState } from "./base-state.model";
+import { IResponseBase } from "./response-base.model";
 
 export interface IPayment {
   id: string;

@@ -1,4 +1,4 @@
-import { IUser, IUserResponse } from "models/IUser";
+import { IUser, IUserResponse } from "models/user.model";
 import { requestType } from "services";
 
 export const AuthService = {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { IRootState } from "redux/store";
-import { IPayment } from "models/IPayment";
+import { IPayment } from "models/payment.model";
 import {
   addPaymentSuccess,
   editPaymentSuccess,
