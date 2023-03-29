@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CategoryService } from "services/category.service";
-import { ICategoryState, emptyCategory, ICategory } from "../models/category.model";
+import { ICategoryState, emptyCategory, ICategory, ICategoryResponse, ICategoryResponses } from "../models/category.model";
 
 export const initialState: ICategoryState = {
   categories: [],
@@ -10,7 +10,7 @@ export const initialState: ICategoryState = {
   initialFetch: true,
 };
 
-export const fetchCategoriesAsync = createAsyncThunk<ICategory[], void>(
+export const fetchCategoriesAsync = createAsyncThunk<ICategoryResponses, void>(
   "category/fetchCategoriesAsync",
   async (_, thunkApi) => {
     try {
@@ -53,10 +53,10 @@ export const categorySlice = createSlice({
     builder.addCase(fetchCategoriesAsync.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchCategoriesAsync.fulfilled, (state, action) => {
+    builder.addCase(fetchCategoriesAsync.fulfilled, (state, action: PayloadAction<ICategoryResponses>) => {
       state.isLoading = false;
       state.initialFetch = false;
-      state.categories = action.payload;
+      state.categories = action.payload.data;
     });
     builder.addCase(fetchCategoriesAsync.rejected, (state, action) => {
       state.isLoading = false;

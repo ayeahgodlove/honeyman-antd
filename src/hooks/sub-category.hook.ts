@@ -5,7 +5,7 @@ import { ISubCategory } from "models/category.model";
 import {
   addSubCategorySuccess,
   editSubCategorySuccess,
-  fetchCategoriesAsync,
+  fetchSubCategoriesAsync,
   setActiveSubCategory,
 } from "../redux/sub-category.slice";
 import { SubCategoryService } from "services/sub-category.service";
@@ -23,7 +23,7 @@ const useSubCategory = () => {
 
   const loadSubCategorys = useCallback(() => {
     if (initialFetch) {
-      dispatch(fetchCategoriesAsync() as any);
+      dispatch(fetchSubCategoriesAsync() as any);
     }
   }, [dispatch, initialFetch]);
 

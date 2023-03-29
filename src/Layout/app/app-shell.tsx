@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 import { ConfigProvider, theme } from "antd";
 import { useTheme } from "hooks/shared/theme.hook";
+import { AppModalProvider } from "context/app-modal.context";
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
 const { Sider, Content } = Layout;
@@ -19,7 +20,7 @@ const { Sider, Content } = Layout;
 const items2: MenuProps["items"] = [
   {
     label: (
-      <Link to="/categories" style={{ padding: 0 }}>
+      <Link to="/admin/categories" style={{ padding: 0 }}>
         Categories
       </Link>
     ),
@@ -28,7 +29,7 @@ const items2: MenuProps["items"] = [
   },
   {
     label: (
-      <Link to="/products" style={{ padding: 0 }}>
+      <Link to="/admin/products" style={{ padding: 0 }}>
         Products
       </Link>
     ),
@@ -37,7 +38,7 @@ const items2: MenuProps["items"] = [
   },
   {
     label: (
-      <Link to="/orders" style={{ padding: 0 }}>
+      <Link to="/admin/orders" style={{ padding: 0 }}>
         Orders
       </Link>
     ),
@@ -46,11 +47,29 @@ const items2: MenuProps["items"] = [
   },
   {
     label: (
-      <Link to="/users" style={{ padding: 0 }}>
+      <Link to="/admin/users" style={{ padding: 0 }}>
         Users
       </Link>
     ),
     key: "users",
+    icon: <FaUsersCog size={21} color="#f77908" />,
+  }, // remember to pass the key prop
+  {
+    label: (
+      <Link to="/admin/reviews" style={{ padding: 0 }}>
+        Reviews
+      </Link>
+    ),
+    key: "reviews",
+    icon: <FaUsersCog size={21} color="#f77908" />,
+  }, // remember to pass the key prop
+  {
+    label: (
+      <Link to="/admin/payments" style={{ padding: 0 }}>
+        Payments
+      </Link>
+    ),
+    key: "payments",
     icon: <FaUsersCog size={21} color="#f77908" />,
   }, // remember to pass the key prop
 ];
@@ -60,7 +79,7 @@ interface IProps {
 const AppShell: React.FC<IProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [show, setShow] = useState(false);
-  const { isDarkMode } = useTheme()
+  const { isDarkMode } = useTheme();
 
   const handleShow = () => {
     setShow(true);
@@ -73,75 +92,70 @@ const AppShell: React.FC<IProps> = ({ children }) => {
     setShow(false);
   };
 
-  useEffect(() => {}, [])
+  useEffect(() => {}, []);
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
-      }}
-    >
-      <Layout className="app-shell-layout">
-        <Navbar showMenuIcon handleShow={handleShow} />
-        <Layout>
-          <Sider
-            width={200}
-            className={`site-layout-background ${
-              show ? "app-shell-sidebar_show" : "app-shell-sidebar_hide"
-            }`}
-            collapsible
-            collapsed={collapsed}
-            onCollapse={handleCollapse}
-          >
-            <Menu
-              mode="inline"
-              style={{ height: "100%", borderRight: 0 }}
-              items={items2}
-            />
-          </Sider>
-          <Drawer
-            title="HoneyMan"
-            placement="left"
-            closable={true}
-            onClose={onClose}
-            open={show}
-            width={200}
-          >
+    <AppModalProvider>
+      <ConfigProvider
+        theme={{
+          algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+        }}
+      >
+        <Layout className="app-shell-layout">
+          <Navbar showMenuIcon handleShow={handleShow} />
+          <Layout>
             <Sider
               width={200}
               className={`site-layout-background ${
                 show ? "app-shell-sidebar_show" : "app-shell-sidebar_hide"
               }`}
+              collapsible
+              collapsed={collapsed}
+              onCollapse={handleCollapse}
             >
               <Menu
                 mode="inline"
-                defaultSelectedKeys={["1"]}
-                defaultOpenKeys={["sub1"]}
-                style={{ height: "100%", borderRight: 0 }}
+                style={{ height: "100vh", borderRight: 0 }}
                 items={items2}
               />
             </Sider>
-          </Drawer>
-
-          <Layout style={{ padding: "0 24px 24px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Content
-              className="site-layout-background"
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-              }}
+            <Drawer
+              title="HoneyMan"
+              placement="left"
+              closable={true}
+              onClose={onClose}
+              open={show}
+              width={200}
             >
-              {children}
-            </Content>
+              <Sider
+                width={200}
+                className={`site-layout-background ${
+                  show ? "app-shell-sidebar_show" : "app-shell-sidebar_hide"
+                }`}
+              >
+                <Menu
+                  mode="inline"
+                  defaultSelectedKeys={["1"]}
+                  defaultOpenKeys={["sub1"]}
+                  style={{ height: "100%", borderRight: 0 }}
+                  items={items2}
+                />
+              </Sider>
+            </Drawer>
+
+              <Content
+                className="site-layout-background"
+                style={{
+                  padding: 24,
+                  margin: 0,
+                  minHeight: 400,
+                }}
+              >
+                {children}
+              </Content>
           </Layout>
         </Layout>
-      </Layout>
-    </ConfigProvider>
+      </ConfigProvider>
+    </AppModalProvider>
   );
 };
 

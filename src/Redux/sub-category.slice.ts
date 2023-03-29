@@ -10,8 +10,8 @@ export const initialState: ISubCategoryState = {
   initialFetch: true,
 };
 
-export const fetchCategoriesAsync = createAsyncThunk<ISubCategory[], void>(
-  "subCategory/fetchCategoriesAsync",
+export const fetchSubCategoriesAsync = createAsyncThunk<ISubCategory[], void>(
+  "subCategory/fetchSubCategoriesAsync",
   async (_, thunkApi) => {
     try {
       return await SubCategoryService.list();
@@ -50,15 +50,15 @@ export const subCategorySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCategoriesAsync.pending, (state) => {
+    builder.addCase(fetchSubCategoriesAsync.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchCategoriesAsync.fulfilled, (state, action) => {
+    builder.addCase(fetchSubCategoriesAsync.fulfilled, (state, action) => {
       state.isLoading = false;
       state.initialFetch = false;
       state.subCategories = action.payload;
     });
-    builder.addCase(fetchCategoriesAsync.rejected, (state, action) => {
+    builder.addCase(fetchSubCategoriesAsync.rejected, (state, action) => {
       state.isLoading = false;
       state.errors = action.payload;
     });

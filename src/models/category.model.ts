@@ -2,7 +2,7 @@ import { IBaseState } from "./base-state.model";
 import { IResponseBase } from "./response-base.model";
 
 export interface ICategory {
-  id: number;
+  id: string;
   name: string;
   slug: string;
   createdAt: Date;
@@ -11,11 +11,11 @@ export interface ICategory {
 }
 
 export interface ISubCategory extends ICategory {
-  categoryId: number;
+  categoryId: string;
 }
 
 export const emptyCategory: ICategory = {
-  id: 0,
+  id: "",
   name: "",
   slug: "",
   createdAt: new Date(),
@@ -25,7 +25,7 @@ export const emptyCategory: ICategory = {
 
 export const emptySubCategory: ISubCategory = {
   ...emptyCategory,
-  categoryId: 0,
+  categoryId: "",
 };
 
 
@@ -40,6 +40,10 @@ export interface ISubCategoryState extends IBaseState {
 
 export interface ICategoryResponse extends IResponseBase {
   data: ICategory;
+}
+
+export interface ICategoryResponses extends IResponseBase {
+  data: ICategory[];
 }
 
 export interface ISubCategoryResponse extends IResponseBase {

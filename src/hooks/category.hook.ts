@@ -9,8 +9,9 @@ import {
   setActiveCategory,
 } from "../redux/category.slice";
 import { CategoryService } from "services/category.service";
+import { useFormErrors } from "./shared/form-error.hook";
 const useCategory = () => {
-  const categorys = useSelector<IRootState, ICategory[]>((state) => state.category.categories);
+  const categories = useSelector<IRootState, ICategory[]>((state) => state.category.categories);
   const isLoading = useSelector<IRootState, boolean>(
     (state) => state.category.isLoading
   );
@@ -20,6 +21,7 @@ const useCategory = () => {
   const category = useSelector<IRootState, ICategory>((state) => state.category.category);
 
   const dispatch = useDispatch();
+  const { setformError } = useFormErrors()
 
   const loadCategorys = useCallback(() => {
     if (initialFetch) {
@@ -34,7 +36,7 @@ const useCategory = () => {
         return true;
       })
       .catch((error) => {
-        console.log(error)
+        setformError(error)
         return false;
       });
   };
@@ -51,18 +53,18 @@ const useCategory = () => {
         return true;
       })
       .catch((error) => {
-        console.log(error)
+        setformError(error)
         return false;
       });
   };
 
   useEffect(() => {
     loadCategorys();
-  }, [category, categorys, isLoading, initialFetch, loadCategorys]);
+  }, [category, categories, isLoading, initialFetch, loadCategorys]);
 
   return {
     category,
-    categorys,
+    categories,
     isLoading,
     initialFetch,
     addCategory,

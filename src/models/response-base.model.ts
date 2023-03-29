@@ -1,11 +1,18 @@
+
 export interface IResponseBase {
     message: string;
     success: boolean;
-    validationErrors: string[]
+    validationErrors: {
+        property: string;
+        constrains: any[]
+    }
 }
 
 export const emptyResponseBase: IResponseBase = {
     success: false,
     message: '',
-    validationErrors: [],
+    validationErrors: {
+        property: "",
+        constrains: []
+    },
 }

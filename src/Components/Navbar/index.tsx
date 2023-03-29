@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LeftMenu from "./left-menu";
 import RightMenu from "./right-menu";
+import { Header } from "antd/es/layout/layout";
 
 interface IProps {
   showMenuIcon?: boolean;
@@ -12,7 +13,7 @@ interface IProps {
 const Navbar: React.FC<IProps> = ({ showMenuIcon = false, handleShow }) => {
 
   return (
-    <nav className="menuBar">
+    <Header className="menuBar">
       <div className="logo">
         <Link to="/" style={{ marginLeft: 1 }}>
           <img
@@ -41,7 +42,7 @@ const Navbar: React.FC<IProps> = ({ showMenuIcon = false, handleShow }) => {
           />
         )}
       </div>
-    </nav>
+    </Header>
   );
 };
 

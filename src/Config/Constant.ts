@@ -11,5 +11,5 @@ export const Auth0Config = {
 }
 
 export  const AppConstant = {
-    API_URI: "http://localhost:7000"
+    API_URI: "http://localhost:8000"
 }
