@@ -7,12 +7,15 @@ import {
   LogoutOutlined,
   TranslationOutlined,
 } from "@ant-design/icons";
+import { BsSun } from "react-icons/bs";
 import { Avatar, Badge, Space } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 import { useToken } from "hooks/token.hook";
+import { useTheme } from "hooks/shared/theme.hook";
 
 const RightMenu = () => {
   const [language, setLanguage] = useState("en");
+  const { handleSetTheme } = useTheme();
 
   const toggleLanguage = (key: string) => {
     setLanguage(key);
@@ -32,6 +35,29 @@ const RightMenu = () => {
       style: {
         display: isAuthenticated ? "none" : "",
       },
+    }, // remember to pass the key prop
+    {
+      icon: (
+        <BsSun style={{ fontSize: 23 }} />
+      ),
+      label: "",
+      key: "theme",
+      style: {
+        padding: 0,
+      },
+      children: [
+        {
+          label: "Light",
+          key: "light",
+          style: {},
+          onClick: () => handleSetTheme()
+        },
+        {
+          label: "Dark",
+          key: "dark",
+          onClick: () => handleSetTheme()
+        },
+      ],
     }, // remember to pass the key prop
     {
       label: "",
@@ -204,7 +230,7 @@ const RightMenu = () => {
     <Menu
       className="right_navigation"
       mode={"horizontal"}
-      style={{ width: isAuthenticated ? "250px" : '200px' }}
+      style={{ width: isAuthenticated ? "250px" : "200px" }}
       items={items}
     />
   );

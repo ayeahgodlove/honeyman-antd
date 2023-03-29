@@ -8,6 +8,7 @@ import { categoryReducer } from "./category.slice";
 import { orderReducer } from "./order.slice";
 import { subCategoryReducer } from "./sub-category.slice";
 import { paymentReducer } from "./payment.slice";
+import { themeReducer } from "./shared/theme.slice";
 
 const middlewares: [any] = [thunkMiddleware];
 
@@ -19,6 +20,7 @@ export const rootReducer = combineReducers({
   category: categoryReducer,
   subCategory: subCategoryReducer,
   payment: paymentReducer,
+  theme: themeReducer
 });
 
 const store = configureStore({

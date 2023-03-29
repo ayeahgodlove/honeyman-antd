@@ -9,7 +9,6 @@ const WelcomePage: React.FC = () => {
   useEffect(() => {}, [token]);
   return (
     <GeneralAppShell>
-      <h1 style={{ padding: 30 }}> Welcome Page Page</h1>
       {/* search component */}
       <FilterComponent />
       {/* product list */}
