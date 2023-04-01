@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Divider, Switch } from "antd";
+import { Menu, Divider, Switch, ConfigProvider } from "antd";
 import { Link } from "react-router-dom";
 import {
   BellOutlined,
@@ -47,13 +47,17 @@ const RightMenu = () => {
       children: [
         {
           label: (
-            <Switch
+            <ConfigProvider theme={{ token: {
+              colorPrimary: "#f77908"
+            }}}>
+              <Switch
               defaultChecked={isDarkMode}
               // size="small"
               onChange={handleSetTheme}
               checkedChildren={<BsSun size={18} />}
               unCheckedChildren={<MdDarkMode size={18} color="#333" />}
             />
+            </ConfigProvider>
           ),
           key: "light",
           style: {},
