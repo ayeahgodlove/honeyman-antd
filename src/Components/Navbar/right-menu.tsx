@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Divider } from "antd";
+import { Menu, Divider, Switch } from "antd";
 import { Link } from "react-router-dom";
 import {
   BellOutlined,
@@ -12,10 +12,11 @@ import { Avatar, Badge, Space } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 import { useToken } from "hooks/token.hook";
 import { useTheme } from "hooks/shared/theme.hook";
+import { MdDarkMode } from "react-icons/md";
 
 const RightMenu = () => {
   const [language, setLanguage] = useState("en");
-  const { handleSetTheme } = useTheme();
+  const { handleSetTheme, isDarkMode } = useTheme();
 
   const toggleLanguage = (key: string) => {
     setLanguage(key);
@@ -37,9 +38,7 @@ const RightMenu = () => {
       },
     }, // remember to pass the key prop
     {
-      icon: (
-        <BsSun style={{ fontSize: 23 }} />
-      ),
+      icon: <BsSun style={{ fontSize: 23 }} />,
       label: "",
       key: "theme",
       style: {
@@ -47,15 +46,18 @@ const RightMenu = () => {
       },
       children: [
         {
-          label: "Light",
+          label: (
+            <Switch
+              defaultChecked={isDarkMode}
+              // size="small"
+              onChange={handleSetTheme}
+              checkedChildren={<BsSun size={18} />}
+              unCheckedChildren={<MdDarkMode size={18} color="#333" />}
+            />
+          ),
           key: "light",
           style: {},
-          onClick: () => handleSetTheme()
-        },
-        {
-          label: "Dark",
-          key: "dark",
-          onClick: () => handleSetTheme()
+          // onClick: () => handleSetTheme()
         },
       ],
     }, // remember to pass the key prop
@@ -228,9 +230,10 @@ const RightMenu = () => {
 
   return (
     <Menu
+      theme={isDarkMode ? "dark" : "light"}
       className="right_navigation"
       mode={"horizontal"}
-      style={{ width: isAuthenticated ? "250px" : "200px" }}
+      style={{ width: isAuthenticated ? "250px" : "200px", background: "inherit" }}
       items={items}
     />
   );

@@ -15,7 +15,7 @@ import { useTheme } from "hooks/shared/theme.hook";
 import { AppModalProvider } from "context/app-modal.context";
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
-const { Sider, Content } = Layout;
+const { Sider, Content, Footer } = Layout;
 
 const items2: MenuProps["items"] = [
   {
@@ -100,7 +100,7 @@ const AppShell: React.FC<IProps> = ({ children }) => {
           algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
         }}
       >
-        <Layout className="app-shell-layout">
+        <Layout  className="app-shell-layout">
           <Navbar showMenuIcon handleShow={handleShow} />
           <Layout>
             <Sider
@@ -153,6 +153,7 @@ const AppShell: React.FC<IProps> = ({ children }) => {
                 {children}
               </Content>
           </Layout>
+          {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}
         </Layout>
       </ConfigProvider>
     </AppModalProvider>
