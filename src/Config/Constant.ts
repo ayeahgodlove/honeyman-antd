@@ -1,9 +1,14 @@
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
+
 export const Auth0Config = {
-    DOMAIN:"dev-78podwfm.us.auth0.com",
-    CLIENT_ID:"l31TbwoPpGeH6yQANLbrWjnZnsynt5Ht",
-    CLIENT_SECRET: "TBP5GwgCVXUIY8UdDjWI1m6PAYO8_8Z9aWumsXiFzVn0noNotLtoDOtqCpWJa7o4",
+    DOMAIN:`${process.env.DOMAIN}`,
+    CLIENT_ID:`${process.env.CLIENT_ID}`,
+    CLIENT_SECRET: `${process.env.CLIENT_SECRET}`,
     REDIRECT_URI:`${window.location.origin}/callback`,
-    AUDIENCE: "https://www.honeyman-api.com",
+    AUDIENCE: `${process.env.AUDIENCE}`,
     callbackURL: "http://localhost:3000/callback",
     SCOPE:"read:current_user update:current_user_metadata",
     RESPONSE_TYPE:"code",
