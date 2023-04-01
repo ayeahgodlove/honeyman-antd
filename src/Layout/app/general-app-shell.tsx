@@ -1,11 +1,13 @@
 import { Drawer, Layout, Menu } from "antd";
 import React, { useState } from "react";
-import { ConfigProvider, theme } from "antd";
+import { ConfigProvider, theme, FloatButton } from "antd";
 
 import Navbar from "components/navbar";
 import "./AppShell.scss";
 import { GeneralMenuItemsWithIcons } from "components/navbar/menu";
 import { useTheme } from "hooks/shared/theme.hook";
+import { FiArrowUp } from "react-icons/fi";
+import useWindowSize from "hooks/shared/window-resize.hook";
 
 const { Sider, Content } = Layout;
 const { defaultAlgorithm, darkAlgorithm } = theme;
@@ -17,6 +19,7 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [show, setShow] = useState(false);
   const { isDarkMode } = useTheme();
+  const { height } = useWindowSize();
   const handleShow = () => {
     setShow(true);
   };
@@ -27,8 +30,6 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
   const onClose = () => {
     setShow(false);
   };
-
-
 
   return (
     <ConfigProvider
@@ -63,7 +64,7 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
             </Sider>
           </Drawer>
 
-          <Layout style={{ padding: "0 24px 24px" }}>
+          <Layout style={{ padding: 0 }}>
             <Content
               className="site-layout-background"
               style={{
@@ -75,6 +76,7 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
             >
               {children}
             </Content>
+            <FloatButton.BackTop icon={<FiArrowUp />} visibilityHeight={400} />
           </Layout>
         </Layout>
       </Layout>

@@ -1,3 +1,4 @@
+import { Banner } from "components/banner/banner.component";
 import FilterComponent from "components/product/filter.component";
 import ProductList from "components/product/product-list.component";
 import { useToken } from "hooks/token.hook";
@@ -9,6 +10,7 @@ const WelcomePage: React.FC = () => {
   useEffect(() => {}, [token]);
   return (
     <GeneralAppShell>
+      <Banner />
       {/* search component */}
       <FilterComponent />
       {/* product list */}
