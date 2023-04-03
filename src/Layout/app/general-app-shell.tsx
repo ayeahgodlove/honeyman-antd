@@ -45,8 +45,8 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
             y: 300,
             scale: 0.7,
             duration: 7000,
-            repeat: -1,
-            opacity: 0.3,
+            repeat: 0,
+            opacity: 0.6,
           }}
           style={{
             transform: "translateX(-80px)",
@@ -90,9 +90,9 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
               animation={{
                 x: 280,
                 y: 250,
-                repeat: -1, // demo 演示需要
+                repeat: 0, // demo 演示需要
                 duration: 5000,
-                opacity: 0.3,
+                opacity: 0.6,
               }}
               style={{
                 transform: "translateX(-80px)",
@@ -100,7 +100,6 @@ const GeneralAppShell: React.FC<IProps> = ({ children }) => {
                 position: "absolute",
                 zIndex: 10,
               }}
-              // className="code-box-shape"
             >
               <img src="/honeybee.png" height={50} width={50} />
             </TweenOne>
