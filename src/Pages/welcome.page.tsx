@@ -1,6 +1,7 @@
 import { Banner } from "components/banner/banner.component";
 import FilterComponent from "components/product/filter.component";
 import ProductList from "components/product/product-list.component";
+import { WhyHoneyMan } from "components/why-honeyman/why-honeyman.component";
 import { useToken } from "hooks/token.hook";
 import GeneralAppShell from "layout/app/general-app-shell";
 import React, { useEffect } from "react";
@@ -11,6 +12,8 @@ const WelcomePage: React.FC = () => {
   return (
     <GeneralAppShell>
       <Banner />
+      {/* why honeyman */}
+      <WhyHoneyMan />
       {/* search component */}
       <FilterComponent />
       {/* product list */}
