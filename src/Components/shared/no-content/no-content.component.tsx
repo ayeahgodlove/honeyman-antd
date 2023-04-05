@@ -17,7 +17,7 @@ export const NoContent: React.FunctionComponent<Props> = ({
     children
 }) => {
     return (
-        <Card bordered={false} size="small">
+        <Card bordered={false} size="small" style={{ borderRadius: 0}}>
             <div
                 style={{
                     minHeight: '200px',
