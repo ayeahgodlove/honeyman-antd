@@ -3,6 +3,9 @@
   --g: 10px;
   display: grid;
 
+  // fix overflow
+  margin-top: 120px;
+
   & > img {
     grid-area: 1/1;
     width: var(--s);
@@ -33,5 +36,31 @@
     &:nth-child(6) {
       --_y: calc(50% + 0.5 * var(--g));
     }
+  }
+}
+
+.banner__text .ant-typography {
+  text-align: center;
+  line-height: 1.2;
+  // font-size: 40;
+  font-size: 30px;
+}
+.banner__text {
+  margin-top: 150px;
+}
+
+@media screen and (min-width: 768px) {
+  .banner__text {
+    margin-top: auto;
+  }
+
+  .banner__text .ant-typography {
+    font-size: 40px;
+    line-height: 1.5;
+  }
+
+  .gallery {
+    // fix overflow
+    margin-top: auto;
   }
 }

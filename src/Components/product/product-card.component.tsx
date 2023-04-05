@@ -1,9 +1,11 @@
-import { Button, Card, Col, List } from "antd";
+import { Button, Card, Col, List, Space } from "antd";
 import { IProduct } from "models/product.model";
 import React from "react";
 import "./product.style.scss";
 import { RiHeartFill } from "react-icons/ri";
 import RaterComponent from "components/shared/rate.component";
+// import { FiPlus } from "react-icons/fi";
+import { PlusOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 interface IProp {
@@ -19,7 +21,7 @@ const ProductCard: React.FC<IProp> = ({ product }) => {
       <Card
         bordered={false}
         style={{ padding: 0 }}
-        bodyStyle={{ paddingTop: 10, paddingBottom: 0 }}
+        bodyStyle={{ paddingTop: 10 }}
         cover={<img alt={product.description} src={product.imagePath} />}
         className="product-card"
       >
@@ -32,11 +34,25 @@ const ProductCard: React.FC<IProp> = ({ product }) => {
         >
           <div>
             <Meta title={product.name} description={<RaterComponent />} />
-            <p>
+          </div>
+
+          <div style={{ textAlign: "right"}}>
+            <p style={{ marginBottom:5}}>
               <b>{"$" + product.price}</b>
             </p>
+            <Button type="default" size="large" style={{ borderRadius: 15 }}>
+              <Space
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <PlusOutlined />
+                <span>Add To Cart</span>
+              </Space>
+            </Button>
           </div>
-         
         </div>
         <Button
           type="link"

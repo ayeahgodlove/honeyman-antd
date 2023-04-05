@@ -7,11 +7,6 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import { Auth0Config } from "config/constant";
 import { useNavigate } from "react-router-dom";
 
-// const theme: ThemeConfig = {
-//   token: {
-//     colorPrimary: "#f77908",
-//   },
-// };
 
 const onRedirectCallback = (appState: any) => {
   const history = useNavigate();

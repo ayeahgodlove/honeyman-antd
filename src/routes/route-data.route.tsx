@@ -2,6 +2,8 @@ import { IRoute } from "models/route.model";
 import NotFoundPage from "pages/404_Page";
 import AdminCategoryDetailPage from "pages/admin/category/category-detail.page";
 import AdminCategoryPage from "pages/admin/category/category.page";
+import AdminReviewDetailPage from "pages/admin/review/review-detail.page";
+import AdminReviewPage from "pages/admin/review/review.page";
 import ForgotPasswordPage from "pages/auth/forgot-password.page";
 import LoginPage from "pages/auth/login.page";
 import RegisterPage from "pages/auth/register.page";
@@ -89,6 +91,20 @@ export const routes: IRoute[] = [
     private: true,
     exact: true,
     component: <AdminCategoryDetailPage />,
+  },
+    // admin section
+  // private routes
+  {
+    path: "/admin/reviews",
+    private: true,
+    exact: true,
+    component: <AdminReviewPage />,
+  },
+  {
+    path: "/admin/reviews/:id",
+    private: true,
+    exact: true,
+    component: <AdminReviewDetailPage />,
   },
   {
     // default not found route

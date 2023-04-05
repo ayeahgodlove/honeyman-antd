@@ -13,7 +13,7 @@ const ProductPage: React.FC = () => {
       {/* search component */}
       <FilterComponent />
       {/* product list */}
-      <ProductList />
+      <ProductList/>
     </GeneralAppShell>
   );
 };

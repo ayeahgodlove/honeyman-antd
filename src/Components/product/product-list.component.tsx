@@ -5,7 +5,10 @@ import ProductCard from "./product-card.component";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
 
-const ProductList: React.FC = () => {
+interface Props {
+  slice?: boolean;
+}
+const ProductList: React.FC<Props> = ({ slice = false }) => {
   return (
     <List
       className="product-list"
@@ -18,11 +21,11 @@ const ProductList: React.FC = () => {
         xl: 4,
         xxl: 5,
       }}
-      dataSource={ProductData}
+      dataSource={slice ? ProductData.slice(0, 4) : ProductData}
       renderItem={(product) => (
         <Link
           key={product.id}
-          to={`/products/${(slugify(product.name))}`}
+          to={`/products/${slugify(product.name, { lower: true })}`}
         >
           <ProductCard product={product} />
         </Link>

@@ -17,7 +17,6 @@ const FilterComponent: React.FC = () => {
         placeholder="What do you need?"
         onSearch={onSearch}
         onChange={handleSearchChange}
-        enterButton
         size="large"
       />
     </Col>

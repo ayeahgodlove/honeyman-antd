@@ -1,4 +1,9 @@
-import { Action, ThunkAction, combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  Action,
+  ThunkAction,
+  combineReducers,
+  configureStore,
+} from "@reduxjs/toolkit";
 import thunkMiddleware from "redux-thunk";
 import loggerMiddleware from "redux-logger";
 import { tokenReducer } from "./token.slice";
@@ -10,6 +15,7 @@ import { subCategoryReducer } from "./sub-category.slice";
 import { paymentReducer } from "./payment.slice";
 import { themeReducer } from "./shared/theme.slice";
 import { formErrorReducer } from "./shared/form-error.slice";
+import { reviewReducer } from "./review.slice";
 
 const middlewares: [any] = [thunkMiddleware];
 
@@ -21,8 +27,9 @@ export const rootReducer = combineReducers({
   category: categoryReducer,
   subCategory: subCategoryReducer,
   payment: paymentReducer,
+  review: reviewReducer,
   theme: themeReducer,
-  formError: formErrorReducer
+  formError: formErrorReducer,
 });
 
 const store = configureStore({
@@ -35,6 +42,6 @@ const store = configureStore({
 });
 
 export type IRootState = ReturnType<typeof rootReducer>;
-export type AppThunk = ThunkAction<void, IRootState, unknown, Action<string>>
+export type AppThunk = ThunkAction<void, IRootState, unknown, Action<string>>;
 
 export default store;

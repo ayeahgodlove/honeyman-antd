@@ -29,6 +29,7 @@ export const Banner: React.FC = () => {
             justifyContent: "center",
             alignItems: "center",
           }}
+          className=""
         >
           <div className="gallery">
             <img src="./images/image-9.jpg" alt="image 1" />
@@ -37,7 +38,7 @@ export const Banner: React.FC = () => {
 
             <img src="./images/image-8.jpg" alt="image 3" />
 
-            <img src="./images/image-4.jpg" alt="image 4" />
+            <img src="./images/image-10.jpg" alt="image 4" />
 
             <img src="./images/image-5.jpg" alt="image 5" />
 
@@ -46,8 +47,8 @@ export const Banner: React.FC = () => {
             <img src="./images/image-7.jpg" alt="image 7" />
           </div>
         </Col>
-        <Col xs={20} md={13} lg={13}>
-          <Title style={{ textAlign: "center", lineHeight: 1.5, fontSize: 40 }}>
+        <Col xs={20} md={13} lg={13} className="banner__text">
+          <Title>
             <span style={{ color: "#f77908" }}>
               One-stop natural honey market
             </span>{" "}

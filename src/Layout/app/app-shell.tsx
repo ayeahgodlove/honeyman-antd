@@ -29,6 +29,24 @@ const items2: MenuProps["items"] = [
   },
   {
     label: (
+      <Link to="/admin/reviews" style={{ padding: 0 }}>
+        Reviews
+      </Link>
+    ),
+    key: "reviews",
+    icon: <BiCategoryAlt size={21} color="#f77908" />,
+  },
+  {
+    label: (
+      <Link to="/admin/sub-categories" style={{ padding: 0 }}>
+        Sub Categories
+      </Link>
+    ),
+    key: "sub-categories",
+    icon: <BiCategoryAlt size={21} color="#f77908" />,
+  },
+  {
+    label: (
       <Link to="/admin/products" style={{ padding: 0 }}>
         Products
       </Link>
@@ -98,9 +116,10 @@ const AppShell: React.FC<IProps> = ({ children }) => {
       <ConfigProvider
         theme={{
           algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+          token: {},
         }}
       >
-        <Layout  className="app-shell-layout">
+        <Layout className="app-shell-layout">
           <Navbar showMenuIcon handleShow={handleShow} />
           <Layout>
             <Sider
@@ -142,16 +161,16 @@ const AppShell: React.FC<IProps> = ({ children }) => {
               </Sider>
             </Drawer>
 
-              <Content
-                className="site-layout-background"
-                style={{
-                  padding: 24,
-                  margin: 0,
-                  minHeight: 400,
-                }}
-              >
-                {children}
-              </Content>
+            <Content
+              className="site-layout-background"
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 400,
+              }}
+            >
+              {children}
+            </Content>
           </Layout>
           {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}
         </Layout>

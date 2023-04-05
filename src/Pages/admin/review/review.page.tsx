@@ -1,6 +1,6 @@
 import { Modal } from "antd";
-import { CategoryForm } from "components/admin/category/category-form.component";
-import CategoryTable from "components/admin/category/category-table.component";
+import { ReviewForm } from "components/admin/review/review-form.component";
+import ReviewTable from "components/admin/review/review-table.component";
 import TitleBar from "components/common/title-bar/title-bar.component";
 import PageBreadCrumbs from "components/shared/page-breadcrumb/page-breadcrumb.component";
 import { useModalContext } from "context/app-modal.context";
@@ -10,9 +10,9 @@ import { UpdateMode } from "models/shared/update-mode.enum";
 import React, { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { fetchCategoriesAsync } from "redux/category.slice";
+import { fetchReviewsAsync } from "redux/review.slice";
 
-const AdminCategoryPage: React.FC = () => {
+const AdminReviewPage: React.FC = () => {
   const { token } = useToken();
   useEffect(() => {}, [token]);
   const { setContent, setTitle, setShow } = useModalContext();
@@ -31,28 +31,28 @@ const AdminCategoryPage: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  const createCategory = () => {
-    setContent(<CategoryForm formMode={UpdateMode.ADD} />);
-    setTitle("Create new category");
+  const createReview = () => {
+    setContent(<ReviewForm formMode={UpdateMode.ADD} />);
+    setTitle("Create new review");
     setShow(true);
   };
 
   useEffect(()=> {
-    dispatch(fetchCategoriesAsync() as any)
+    dispatch(fetchReviewsAsync() as any)
   },[])
 
   return (
     <AppShell>
-      <PageBreadCrumbs items={["Configurations", "Category"]} />
+      <PageBreadCrumbs items={["Configurations", "Review"]} />
       <TitleBar
-        title={"Categories"}
-        subTitle={"View and Create Categories"}
+        title={"Reviews"}
+        subTitle={"View and Create Reviews"}
         showButton={true}
         buttonLabel={"Add Record"}
         handleShow={showModal}
         icon={<FiPlus />}
       />
-      <CategoryTable createCategory={showModal} />
+      <ReviewTable createReview={showModal} />
 
       <Modal
         title="Basic Modal"
@@ -60,10 +60,10 @@ const AdminCategoryPage: React.FC = () => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <CategoryForm formMode={UpdateMode.ADD} />
+        <ReviewForm formMode={UpdateMode.ADD} />
       </Modal>
     </AppShell>
   );
 };
 
-export default AdminCategoryPage;
+export default AdminReviewPage;
