@@ -1,14 +1,15 @@
 import { List } from "antd";
-import { ProductData } from "mock-data/product.data";
 import React from "react";
 import ProductCard from "./product-card.component";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
+import { useProduct } from "hooks/product.hook";
 
 interface Props {
   slice?: boolean;
 }
 const ProductList: React.FC<Props> = ({ slice = false }) => {
+  const { products } = useProduct();
   return (
     <List
       className="product-list"
@@ -21,7 +22,7 @@ const ProductList: React.FC<Props> = ({ slice = false }) => {
         xl: 4,
         xxl: 5,
       }}
-      dataSource={slice ? ProductData.slice(0, 4) : ProductData}
+      dataSource={slice ? products.slice(0, 4) : products}
       renderItem={(product) => (
         <Link
           key={product.id}
