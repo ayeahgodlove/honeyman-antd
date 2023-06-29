@@ -6,7 +6,9 @@ import {
 } from "@reduxjs/toolkit";
 import thunkMiddleware from "redux-thunk";
 import loggerMiddleware from "redux-logger";
-import { tokenReducer } from "./token.slice";
+import { persistStore, persistReducer } from "redux-persist";
+import sessionStorage from 'redux-persist/lib/storage/session'
+
 import { productReducer } from "./product.slice";
 import { userReducer } from "./user.slice";
 import { categoryReducer } from "./category.slice";
@@ -16,11 +18,11 @@ import { paymentReducer } from "./payment.slice";
 import { themeReducer } from "./shared/theme.slice";
 import { formErrorReducer } from "./shared/form-error.slice";
 import { reviewReducer } from "./review.slice";
+import { authReducer } from "./auth/auth.slice";
 
 const middlewares: [any] = [thunkMiddleware];
 
 export const rootReducer = combineReducers({
-  token: tokenReducer,
   user: userReducer,
   product: productReducer,
   order: orderReducer,
@@ -30,10 +32,29 @@ export const rootReducer = combineReducers({
   review: reviewReducer,
   theme: themeReducer,
   formError: formErrorReducer,
+  auth: authReducer,
 });
 
+const persistConfig = {
+  key: "root",
+  storage: sessionStorage,
+  whitelist: [
+    "auth",
+    "user",
+    "theme",
+    "category",
+    "subCategory",
+    "product",
+    "order",
+    "review",
+    "payment",
+  ], // Specify the reducers you want to persist
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false })
       .concat(loggerMiddleware)
@@ -44,4 +65,5 @@ const store = configureStore({
 export type IRootState = ReturnType<typeof rootReducer>;
 export type AppThunk = ThunkAction<void, IRootState, unknown, Action<string>>;
 
+export const persistor = persistStore(store);
 export default store;

@@ -1,15 +1,28 @@
 import GeneralAppShell from "layout/app/general-app-shell";
-import React from "react";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Col, Form, Input, Row } from "antd";
+import React, {  useState } from "react";
+import { LockOutlined } from "@ant-design/icons";
+import { Button, Checkbox, Col, Form, Input, Row, message } from "antd";
 import "../../styles/login.style.scss";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { MdEmail } from "react-icons/md";
+import { useAuth } from "hooks/auth/auth.hook";
 
 const LoginPage: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
+  const { loginUserFunction, isAuthenticated, user } = useAuth();
+  const [isSubmitting, setSubmitting] = useState(false);
+
+  const onFinish = async (values: any) => {
+    setSubmitting(true);
+    loginUserFunction({
+      email: values.email,
+      password: values.password,
+    });
+    setSubmitting(false);
   };
 
+  if (isAuthenticated && user) {
+    return <Navigate to={"/callback"} />;
+  }
   return (
     <GeneralAppShell>
       <Row
@@ -40,14 +53,12 @@ const LoginPage: React.FC = () => {
             onFinish={onFinish}
           >
             <Form.Item
-              name="username"
-              rules={[
-                { required: true, message: "Please input your Username!" },
-              ]}
+              name="email"
+              rules={[{ required: true, message: "Please input your Email!" }]}
             >
               <Input
-                prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Username"
+                prefix={<MdEmail className="site-form-item-icon" />}
+                placeholder="Email"
               />
             </Form.Item>
             <Form.Item
@@ -84,6 +95,7 @@ const LoginPage: React.FC = () => {
                 htmlType="submit"
                 className="login-form-button"
                 style={{ width: "100%" }}
+                loading={isSubmitting}
               >
                 Log in
               </Button>{" "}

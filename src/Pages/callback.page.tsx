@@ -1,5 +1,5 @@
 import Spinner from "components/utilities/Spinner";
-import { useToken } from "hooks/token.hook";
+import { useAuth } from "hooks/auth/auth.hook";
 import GeneralAppShell from "layout/app/general-app-shell";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -7,23 +7,22 @@ import { Navigate } from "react-router-dom";
 import { initialDataAsync } from "redux/action/initial.action";
 
 const CallbackPage: React.FC = () => {
-  const { isLoading, user, isAuthenticated } = useToken();
+  const {isLoading, isAuthenticated, user } = useAuth();
   const dispatch = useDispatch();
-  console.log("user: ", user);
-
-  if (!isLoading) {
-    <GeneralAppShell>
+  
+  if (isLoading) {
+   return <GeneralAppShell>
       <Spinner />
     </GeneralAppShell>;
   }
 
   // load initial data into the redux store here
   if (isAuthenticated && user) {
-    setTimeout(() => {
-      // dispatch(initialDataAsync() as any);
+    setTimeout(() =>   {
+      dispatch(initialDataAsync() as any);
     }, 3000);
   }
-  return <Navigate to={"/"} />;
+  return <Navigate to={"/dashboard"} />;
 };
 
 export default CallbackPage;

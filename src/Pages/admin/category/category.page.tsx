@@ -4,7 +4,7 @@ import CategoryTable from "components/admin/category/category-table.component";
 import TitleBar from "components/common/title-bar/title-bar.component";
 import PageBreadCrumbs from "components/shared/page-breadcrumb/page-breadcrumb.component";
 import { useModalContext } from "context/app-modal.context";
-import { useToken } from "hooks/token.hook";
+import { useAuth } from "hooks/auth/auth.hook";
 import AppShell from "layout/app/app-shell";
 import { UpdateMode } from "models/shared/update-mode.enum";
 import React, { useEffect, useState } from "react";
@@ -13,8 +13,8 @@ import { useDispatch } from "react-redux";
 import { fetchCategoriesAsync } from "redux/category.slice";
 
 const AdminCategoryPage: React.FC = () => {
-  const { token } = useToken();
-  useEffect(() => {}, [token]);
+  const { isLoading } = useAuth();
+  useEffect(() => {}, [isLoading]);
   const { setContent, setTitle, setShow } = useModalContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();

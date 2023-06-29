@@ -47,7 +47,7 @@ export const AppModalProvider: FC<Props> = ({ children }) => {
       >
         <Modal
           title={title}
-          visible={show}
+          open={show}
           width={width}
           onOk={handleSave}
           onCancel={() => setShow(false)}

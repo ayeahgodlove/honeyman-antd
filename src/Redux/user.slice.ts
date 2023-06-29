@@ -43,6 +43,7 @@ export const userSlice = createSlice({
       });
     },
     addUserSuccess: (state, action: PayloadAction<IUser>) => {
+      console.log("state.users: ", state.users)
       state.users = [...state.users, action.payload];
     },
     setActiveUser: (state, action: PayloadAction<IUser>) => {

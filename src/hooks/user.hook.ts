@@ -30,8 +30,10 @@ const useUser = () => {
   const addUser = async (user: IUser) => {
     return await UserService.create(user)
       .then((userResponse) => {
+        console.log("SUCCESS!", userResponse.data)
+        debugger
         dispatch(addUserSuccess(userResponse.data));
-        return true;
+        return userResponse.success;
       })
       .catch((error) => {
         console.log(error)

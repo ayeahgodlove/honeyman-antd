@@ -1,11 +1,12 @@
 import { IUser, IUserResponse } from "models/user.model";
 import { requestType } from "services";
 
-export const AuthService = {
+export const authService = {
   register: (user: IUser): Promise<IUserResponse> =>
-    requestType.post(`/api/register`, user),
+    requestType.post(`/auth/register`, user),
   login: (user: {
-    username: string;
+    email: string;
     password: string;
-  }): Promise<IUserResponse> => requestType.post(`/api/login`, user),
+  }): Promise<IUserResponse> => requestType.post(`/auth/login`, user),
+  logout: (): Promise<any> => requestType.get("/auth/logout")
 };

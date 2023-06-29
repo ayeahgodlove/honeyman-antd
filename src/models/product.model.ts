@@ -4,7 +4,7 @@ import { IResponseBase } from "./response-base.model";
 export interface IProduct {
   id: number;
   name: string;
-  price: string;
+  amount: number;
   description: string;
   categoryId: number;
   subCategoryId: number;
@@ -19,7 +19,7 @@ export interface IProduct {
 export const emptyProduct: IProduct = {
   id: 0,
   name: "",
-  price: "",
+  amount: 0,
   description: "",
   categoryId: 0,
   subCategoryId: 0,

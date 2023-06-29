@@ -1,13 +1,36 @@
 import GeneralAppShell from "layout/app/general-app-shell";
-import React from "react";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Col, Form, Input, Row } from "antd";
+import React, { useState } from "react";
+import { LockOutlined, PhoneOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Col, Form, Input, Row, message } from "antd";
 import "../../styles/login.style.scss";
 import { Link } from "react-router-dom";
+import { MdEmail } from "react-icons/md";
+import { useUser } from "hooks/user.hook";
+import { IUser, emptyUser } from "models/user.model";
 
 const RegisterPage: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
+  const { addUser } = useUser();
+  const [isSubmitting, setSubmitting]= useState(false);
+  const onFinish = async (values: any) => {
+    console.log(values)
+    setSubmitting(true)
+    const obj: IUser = {
+      ...emptyUser,
+      firstname: values.firstname,
+      lastname: values.lastname,
+      username: values.username,
+      email: values.email,
+      phoneNumber: values.phoneNumber,
+      password: values.password,
+    };
+
+    const feedback = await addUser(obj);
+    if (feedback) {
+      message.success("User Registered Sucessfully!");
+    } else {
+      message.error("Registration failed!");
+    }
+    setSubmitting(false)
   };
 
   return (
@@ -39,6 +62,38 @@ const RegisterPage: React.FC = () => {
             initialValues={{ remember: true }}
             onFinish={onFinish}
           >
+            <Row justify={"space-between"} align={"middle"}>
+              <Col span={12}>
+                <Form.Item
+                  name="firstname"
+                  rules={[
+                    { required: true, message: "Please input your Firstname!" },
+                  ]}
+                >
+                  <Input
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    placeholder="firstname"
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item
+                  name="lastname"
+                  rules={[
+                    { required: true, message: "Please input your Lastname!" },
+                  ]}
+                  style={{
+                    marginLeft: 5,
+                  }}
+                >
+                  <Input
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    placeholder="lastname"
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+
             <Form.Item
               name="username"
               rules={[
@@ -50,7 +105,29 @@ const RegisterPage: React.FC = () => {
                 placeholder="Username"
               />
             </Form.Item>
-            
+
+            <Form.Item
+              name="email"
+              rules={[{ required: true, message: "Please input your Email!" }]}
+            >
+              <Input
+                prefix={<MdEmail className="site-form-item-icon" />}
+                placeholder="Email"
+              />
+            </Form.Item>
+
+            <Form.Item
+              name="phoneNumber"
+              rules={[
+                { required: true, message: "Please input your PhoneNumber!" },
+              ]}
+            >
+              <Input
+                prefix={<PhoneOutlined className="site-form-item-icon" />}
+                placeholder="PhoneNumber"
+              />
+            </Form.Item>
+
             <Form.Item
               name="password"
               rules={[
@@ -69,6 +146,7 @@ const RegisterPage: React.FC = () => {
                 htmlType="submit"
                 className="login-form-button"
                 style={{ width: "100%" }}
+                loading={isSubmitting}
               >
                 Register
               </Button>{" "}

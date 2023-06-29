@@ -10,16 +10,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem("token");
-    const convertToObj= JSON.parse(token!!)
-    if(token === null) {
-      return config;
-    }
-
     config.headers = {
-      Authorization: `Bearer ${
-        token && token ? convertToObj.token : ""
-      }`,
       Accept: "application/json",
       "Access-Control-Allow-Origin": "*",
       mode: "no-cors",

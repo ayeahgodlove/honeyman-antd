@@ -38,7 +38,7 @@ const ProductCard: React.FC<IProp> = ({ product }) => {
 
           <div style={{ textAlign: "right"}}>
             <p style={{ marginBottom:5}}>
-              <b>{"$" + product.price}</b>
+              <b>{"$" + product.amount}</b>
             </p>
             <Button type="default" size="large" style={{ borderRadius: 15 }}>
               <Space

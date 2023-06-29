@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Menu, Divider, Switch, ConfigProvider } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   BellOutlined,
   InfoCircleTwoTone,
@@ -10,25 +10,26 @@ import {
 import { BsSun } from "react-icons/bs";
 import { Avatar, Badge, Space } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
-import { useToken } from "hooks/token.hook";
 import { useTheme } from "hooks/shared/theme.hook";
 import { MdDarkMode } from "react-icons/md";
+import { useAuth } from "hooks/auth/auth.hook";
 
 const RightMenu = () => {
   const [language, setLanguage] = useState("en");
   const { handleSetTheme, isDarkMode } = useTheme();
 
+  const router = useNavigate();
   const toggleLanguage = (key: string) => {
     setLanguage(key);
     console.log(language);
   };
 
-  const { logoutFun, loginFun, isAuthenticated, user } = useToken();
+  const { logoutUserFunction, isAuthenticated, user } = useAuth();
 
   const items: ItemType[] = [
     {
       label: (
-        <Link to={"#"} onClick={loginFun}>
+        <Link to={"/login"}>
           Signin
         </Link>
       ),
@@ -172,14 +173,14 @@ const RightMenu = () => {
             fontWeight: "bold",
             fontSize: 14,
           }}
-          src={user?.picture}
+          // src={user?.picture}
         >
-          {user?.name?.charAt(0)}
+          {user?.username?.charAt(0).toUpperCase()}
         </Avatar>
       ),
       children: [
         {
-          label: <strong>{user?.name}</strong>,
+          label: <strong>{user?.username}</strong>,
           key: "profile_name",
         },
         {
@@ -215,7 +216,10 @@ const RightMenu = () => {
             {
               label: (
                 <>
-                  <Link to="#" onClick={logoutFun}>
+                  <Link to="#" onClick={() => {
+                    logoutUserFunction()
+                    router('/')
+                  }}>
                     Logout
                   </Link>
                 </>

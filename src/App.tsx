@@ -2,34 +2,18 @@ import React from "react";
 import "./App.css";
 import AppRouteProvider from "routes/app-route-provider";
 import { Provider } from "react-redux";
-import store from "redux/store";
-import { Auth0Provider } from "@auth0/auth0-react";
-import { Auth0Config } from "config/constant";
-import { useNavigate } from "react-router-dom";
-
-
-const onRedirectCallback = (appState: any) => {
-  const history = useNavigate();
-  history(
-    appState && appState.returnTo ? appState.returnTo : window.location.pathname
-  );
-};
+import store, { persistor } from "redux/store";
+import withLoading from "components/shared/with-loading/with-loading.component";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
     <Provider store={store}>
-      <Auth0Provider
-        domain={Auth0Config.DOMAIN}
-        clientId={Auth0Config.CLIENT_ID}
-        redirectUri={Auth0Config.REDIRECT_URI}
-        audience={Auth0Config.AUDIENCE}
-        scope={Auth0Config.SCOPE}
-        onRedirectCallback={onRedirectCallback}
-      >
+      <PersistGate loading={null} persistor={persistor}>
         <AppRouteProvider />
-      </Auth0Provider>
+      </PersistGate>
     </Provider>
   );
 }
 
-export default App;
+export default withLoading(App);
